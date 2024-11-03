@@ -6,7 +6,7 @@ import { Spacer } from './Spacer'
 
 export const ImageAnalysis = () => {
     const { pathname } = useLocation()
-    console.log("##", pathname)
+    console.log("## my path", pathname)
     const title = pathname.replace('/', '')
     return (
         <VStack>
