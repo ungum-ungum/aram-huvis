@@ -3,6 +3,7 @@ import { Layout } from 'antd'
 import React from 'react'
 import { Content } from 'antd/es/layout/layout'
 import { SideBar } from './component/SideBar'
+import { ImageAnalysis } from './component/ImageAnalysis'
 
 function App() {
     return (
@@ -22,10 +23,10 @@ function App() {
                         }}
                     >
                         <Routes>
-                            <Route path="/hemo" element={<div/>}/>
-                            <Route path="/melanin" element={<div/>}/>
-                            <Route path="/pore" element={<div/>}/>
-                            <Route path="/wrinkle" element={<div/>}/>
+                            <Route path="/hemo" element={<ImageAnalysis/>}/>
+                            <Route path="/melanin" element={<ImageAnalysis/>}/>
+                            <Route path="/pore" element={<ImageAnalysis/>}/>
+                            <Route path="/wrinkle" element={<ImageAnalysis/>}/>
                         </Routes>
                     </Content>
                 </Layout>
