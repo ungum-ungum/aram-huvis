@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { Layout } from 'antd'
+import React from 'react'
+import { Content } from 'antd/es/layout/layout'
+import { SideBar } from './component/SideBar'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    return (
+        <Router>
+            <Layout style={{minHeight: '100vh'}}>
+                {/* Sidebar */}
+                <SideBar/>
+
+                {/* Main Content Area */}
+                <Layout style={{padding: '24px'}}>
+                    <Content
+                        style={{
+                            padding: 24,
+                            margin: 0,
+                            minHeight: 280,
+                            background: '#fff'
+                        }}
+                    >
+                        <Routes>
+                            <Route path="/hemo" element={<div/>}/>
+                            <Route path="/melanin" element={<div/>}/>
+                            <Route path="/pore" element={<div/>}/>
+                            <Route path="/wrinkle" element={<div/>}/>
+                        </Routes>
+                    </Content>
+                </Layout>
+            </Layout>
+        </Router>
+    );
+};
 
 export default App;
