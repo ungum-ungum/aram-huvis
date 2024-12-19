@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom'
 import { Layout } from 'antd'
 import React from 'react'
 import { Content } from 'antd/es/layout/layout'
@@ -27,6 +27,7 @@ function App() {
                             <Route path="/melanin" element={<ImageAnalysis/>}/>
                             <Route path="/pore" element={<ImageAnalysis/>}/>
                             <Route path="/wrinkle" element={<ImageAnalysis/>}/>
+                            <Route path="*" element={<Navigate to={'/hemo'}/> }/>
                         </Routes>
                     </Content>
                 </Layout>
