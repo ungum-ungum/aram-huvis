@@ -5,9 +5,31 @@ import { PlusOutlined, UploadOutlined } from '@ant-design/icons';
 export const ImageUploader = () => {
     const [fileList, setFileList] = useState([]);
 
-    const handleChange = ({ fileList: newFileList }) => {
-        setFileList(newFileList);
-    };
+    const handleChange = ({fileList: newFileList}) => {
+        console.log("###### NEW FILE LIST", newFileList)
+        // setFileList(newFileList);
+        const formData = new FormData();
+        newFileList.forEach((file) => {
+            formData.append('file', file.originFileObj); // Append files to the form data
+        });
+
+        console.log("########", formData)
+
+        fetch('http://115.68.67.103:6660/request', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json'
+            },
+            body: formData
+        }).then((r) => {
+            return r.json()
+        }).then((aa) => {
+            console.log("#########", aa)
+        })
+            .catch((e) => {
+                console.log("######## ERROR", e)
+            })
+    }
 
     return (
         <Upload
@@ -19,8 +41,8 @@ export const ImageUploader = () => {
         >
             {fileList.length >= 8 ? null : (
                 <div>
-                    <PlusOutlined />
-                    <div style={{ marginTop: 8 }}>{'Upload Image'}</div>
+                    <PlusOutlined/>
+                    <div style={{marginTop: 8}}>{'이미지 업로드'}</div>
                 </div>
             )}
         </Upload>
