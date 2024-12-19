@@ -14,7 +14,7 @@ interface ImageAnalysis {
 }
 
 export const ImageAnalysis = () => {
-    const { pathname } = useLocation()
+    const {pathname} = useLocation()
     const title = pathname.replace('/', '')
     const [images, setImages] = useState<Array<ImageAnalysis>>([])
     console.log("###### IMAGES", images)
@@ -38,13 +38,15 @@ export const ImageAnalysis = () => {
 
     return (
         <VStack>
-            <div style={{ fontSize: 24 }}>{title}</div>
+            <div style={{fontSize: 24}}>{title}</div>
             <Spacer height={24}/>
             <Row gutter={8}>
-                <div style={{ marginLeft: 'auto'}}>
-                    <ImageUploader onImageUploadSuccess={() => {
-                        fetchImages(title)
-                    }}/>
+                <div style={{marginLeft: 'auto'}}>
+                    <ImageUploader
+                        title={title}
+                        onImageUploadSuccess={() => {
+                            fetchImages(title)
+                        }}/>
                 </div>
             </Row>
             <Spacer height={16}/>
@@ -57,7 +59,7 @@ export const ImageAnalysis = () => {
                         width: 60,
                         render: (id) => (
                             <div>{id}</div>
-                        ),
+                        )
                     },
                     {
                         title: 'analysis_id',
@@ -66,7 +68,7 @@ export const ImageAnalysis = () => {
                         width: 60,
                         render: (id) => (
                             <div>{id}</div>
-                        ),
+                        )
                     },
                     {
                         title: '원본 이미지',
@@ -75,7 +77,7 @@ export const ImageAnalysis = () => {
                         width: 60,
                         render: (imageUrl) => (
                             <img src={imageUrl} width={300}/>
-                        ),
+                        )
                     },
                     {
                         title: '분석 이미지',
@@ -85,10 +87,10 @@ export const ImageAnalysis = () => {
                         render: (value, record, any) => {
                             console.log("#######", value, record, any)
                             if (!record.analysis_image_url || !record.analysis_id) {
-                                return <div style={{ fontSize: 24 }}>{'분석중입니다...'}</div>
+                                return <div style={{fontSize: 24}}>{'분석중입니다...'}</div>
                             }
                             return <img src={record.analysis_image_url} width={300}/>
-                        },
+                        }
                     }
                 ]}
                 dataSource={images}

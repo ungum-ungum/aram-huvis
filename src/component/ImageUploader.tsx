@@ -3,11 +3,12 @@ import { Upload, Button, message } from 'antd';
 import { PlusOutlined, UploadOutlined } from '@ant-design/icons';
 
 interface Props {
+    title: string
     onImageUploadSuccess: () => void
 }
 
 export const ImageUploader = (props: Props) => {
-    const { onImageUploadSuccess } = props
+    const { title, onImageUploadSuccess } = props
     const [fileList, setFileList] = useState([]);
 
     const handleChange = ({fileList: newFileList}) => {
@@ -20,7 +21,7 @@ export const ImageUploader = (props: Props) => {
 
         console.log("########", formData)
 
-        fetch('http://115.68.67.103:6660/request', {
+        fetch(`http://115.68.67.103:6660/${title}/request`, {
             method: 'POST',
             headers: {
                 Accept: 'application/json'
