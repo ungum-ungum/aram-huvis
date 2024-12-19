@@ -4,6 +4,7 @@ import { VStack } from './Stack'
 import { useLocation } from 'react-router-dom'
 import { Spacer } from './Spacer'
 import { useEffect, useState } from 'react'
+import useInterval from 'use-interval'
 
 interface ImageAnalysis {
     _id: string
@@ -17,9 +18,13 @@ export const ImageAnalysis = () => {
     const {pathname} = useLocation()
     const title = pathname.replace('/', '')
     const [images, setImages] = useState<Array<ImageAnalysis>>([])
-    useEffect(() => {
+    // useEffect(() => {
+    //     fetchImages(title)
+    // }, [title]);
+
+    useInterval(() => {
         fetchImages(title)
-    }, [title]);
+    }, 2500)
 
     const fetchImages = (menu: string) => {
         fetch(`http://115.68.67.103:6660/${menu}/images`)
