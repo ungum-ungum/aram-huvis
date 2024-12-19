@@ -43,7 +43,7 @@ export const ImageAnalysis = () => {
             <Row gutter={8}>
                 <div style={{ marginLeft: 'auto'}}>
                     <ImageUploader onImageUploadSuccess={() => {
-                        fetchImages()
+                        fetchImages(title)
                     }}/>
                 </div>
             </Row>
