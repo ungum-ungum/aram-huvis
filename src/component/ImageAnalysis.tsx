@@ -17,7 +17,6 @@ export const ImageAnalysis = () => {
     const {pathname} = useLocation()
     const title = pathname.replace('/', '')
     const [images, setImages] = useState<Array<ImageAnalysis>>([])
-    console.log("###### IMAGES", images)
     useEffect(() => {
         fetchImages(title)
     }, [title]);
@@ -38,7 +37,7 @@ export const ImageAnalysis = () => {
 
     return (
         <VStack>
-            <div style={{fontSize: 24}}>{title}</div>
+            <h1 style={{fontSize: 24}}>{title}</h1>
             <Spacer height={24}/>
             <Row gutter={8}>
                 <div style={{marginLeft: 'auto'}}>
