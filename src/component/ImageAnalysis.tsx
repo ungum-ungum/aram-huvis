@@ -19,11 +19,11 @@ export const ImageAnalysis = () => {
     const [images, setImages] = useState<Array<ImageAnalysis>>([])
     console.log("###### IMAGES", images)
     useEffect(() => {
-        fetchImages()
-    }, []);
+        fetchImages(title)
+    }, [title]);
 
-    const fetchImages = () => {
-        fetch(`http://115.68.67.103:6660/${title}/images`)
+    const fetchImages = (menu: string) => {
+        fetch(`http://115.68.67.103:6660/${menu}/images`)
             .then((response) => {
                 return response.json()
             })
