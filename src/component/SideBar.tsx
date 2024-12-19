@@ -18,9 +18,6 @@ export const SideBar = () => {
                 <Menu.Item key="/hemo" onClick={() => navigate('/hemo')}>
                     Hemo
                 </Menu.Item>
-                <Menu.Item key="/melanin" onClick={() => navigate('/melanin')}>
-                    Melanin
-                </Menu.Item>
                 <Menu.Item key="/pore" onClick={() => navigate('/pore')}>
                     Pore
                 </Menu.Item>

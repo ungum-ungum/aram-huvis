@@ -24,8 +24,8 @@ function App() {
                     >
                         <Routes>
                             <Route path="/hemo" element={<ImageAnalysis/>}/>
-                            <Route path="/melanin" element={<ImageAnalysis/>}/>
                             <Route path="/pore" element={<ImageAnalysis/>}/>
+                            <Route path="/wrinkle" element={<ImageAnalysis/>}/>
                             <Route path="*" element={<Navigate to={'/hemo'}/> }/>
                         </Routes>
                     </Content>

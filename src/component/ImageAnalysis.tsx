@@ -23,7 +23,7 @@ export const ImageAnalysis = () => {
     }, []);
 
     const fetchImages = () => {
-        fetch('http://115.68.67.103:6660/images')
+        fetch(`http://115.68.67.103:6660/${title}/images`)
             .then((response) => {
                 return response.json()
             })
