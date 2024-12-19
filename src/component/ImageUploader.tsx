@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import { Upload, Button } from 'antd';
+import { Upload, Button, message } from 'antd';
 import { PlusOutlined, UploadOutlined } from '@ant-design/icons';
 
-export const ImageUploader = () => {
+interface Props {
+    onImageUploadSuccess: () => void
+}
+
+export const ImageUploader = (props: Props) => {
+    const { onImageUploadSuccess } = props
     const [fileList, setFileList] = useState([]);
 
     const handleChange = ({fileList: newFileList}) => {
@@ -24,7 +29,8 @@ export const ImageUploader = () => {
         }).then((r) => {
             return r.json()
         }).then((aa) => {
-            console.log("#########", aa)
+            onImageUploadSuccess()
+            message.success('이미지를 성공적으로 업로드했습니다')
         })
             .catch((e) => {
                 console.log("######## ERROR", e)

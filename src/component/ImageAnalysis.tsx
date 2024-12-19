@@ -19,6 +19,10 @@ export const ImageAnalysis = () => {
     const [images, setImages] = useState<Array<ImageAnalysis>>([])
     console.log("###### IMAGES", images)
     useEffect(() => {
+        fetchImages()
+    }, []);
+
+    const fetchImages = () => {
         fetch('http://115.68.67.103:6660/images')
             .then((response) => {
                 return response.json()
@@ -30,7 +34,7 @@ export const ImageAnalysis = () => {
             .catch((e) => {
                 console.log("######## EE", e)
             })
-    }, []);
+    }
 
     return (
         <VStack>
@@ -38,7 +42,9 @@ export const ImageAnalysis = () => {
             <Spacer height={24}/>
             <Row gutter={8}>
                 <div style={{ marginLeft: 'auto'}}>
-                    <ImageUploader/>
+                    <ImageUploader onImageUploadSuccess={() => {
+                        fetchImages()
+                    }}/>
                 </div>
             </Row>
             <Spacer height={16}/>
